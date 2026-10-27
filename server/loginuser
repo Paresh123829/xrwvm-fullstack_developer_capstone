@@ -1,0 +1,5 @@
+Task 5: Login user
+Command:
+curl -sS -c cookies.txt -X POST "http://127.0.0.1:8000/djangoapp/login" -H "Content-Type: application/json" -d \{\"userName\":\ \"Paresh\"\,\ \"password\":\ \"Paresh\$123\"\}
+Output:
+{"userName": "Paresh", "status": "Authenticated"}
