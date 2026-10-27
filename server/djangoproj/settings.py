@@ -28,8 +28,18 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+# Replace YOUR_APPLICATION_HOST with your actual application hostname.
+# Do not include https:// or a trailing slash in these hostnames.
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+]
+
+# Django 3.2 format: hostnames without the scheme.
+CSRF_TRUSTED_ORIGINS = [
+    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
@@ -61,7 +71,7 @@ ROOT_URLCONF = 'djangoproj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/static'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,5 +144,9 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/static'),
+]
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
