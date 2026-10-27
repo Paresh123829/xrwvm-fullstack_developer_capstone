@@ -6,9 +6,40 @@
   <link rel="stylesheet" href="static/bootstrap.min.css">
 <script>
 
+
 const logout = async (e) => {
-//Include the code for logout here.
+    if (e) {
+        e.preventDefault();
+    }
+
+    const logoutUrl =
+        window.location.origin + "/djangoapp/logout";
+
+    try {
+        const response = await fetch(logoutUrl, {
+            method: "GET",
+            credentials: "same-origin",
+        });
+
+        const json = await response.json();
+
+        if (response.ok && json) {
+            const username =
+                sessionStorage.getItem("username");
+
+            sessionStorage.removeItem("username");
+
+            alert("Logging out " + (username || "user") + "...");
+
+            window.location.href = window.location.origin;
+        } else {
+            alert("The user could not be logged out.");
+        }
+    } catch (error) {
+        alert("Logout failed. Please try again.");
+    }
 };
+
 
 let checkSession = ()=>{
   let curr_user = sessionStorage.getItem("username");
@@ -16,7 +47,7 @@ let checkSession = ()=>{
   if (curr_user && curr_user !== "") {
     document.getElementById("loginlogout").innerHTML = 
     '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+    '<a class="homepage_links" onclick="logout(event)" href="#">Logout</a>'
   } else {
     document.getElementById("loginlogout").innerHTML = 
     '<a class="homepage_links" href="/login">Login</a>'+

@@ -10,6 +10,7 @@
 
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -22,44 +23,115 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
-# Create a `login_request` view to handle sign in request
+
+# Login view
 @csrf_exempt
 def login_user(request):
-    # Get username and password from request.POST dictionary
-    data = json.loads(request.body)
-    username = data['userName']
-    password = data['password']
-    # Try to check if provide credential can be authenticated
-    user = authenticate(username=username, password=password)
-    data = {"userName": username}
+    if request.method != "POST":
+        return JsonResponse(
+            {"error": "POST method required"},
+            status=405
+        )
+
+    try:
+        data = json.loads(request.body or b"{}")
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        return JsonResponse(
+            {"error": "Invalid JSON"},
+            status=400
+        )
+
+    username = data.get("userName", "").strip()
+    password = data.get("password", "")
+
+    user = authenticate(
+        request,
+        username=username,
+        password=password
+    )
+
     if user is not None:
-        # If user is valid, call login method to login current user
         login(request, user)
-        data = {"userName": username, "status": "Authenticated"}
-    return JsonResponse(data)
+        return JsonResponse({
+            "userName": username,
+            "status": "Authenticated"
+        })
 
-# Create a `logout_request` view to handle sign out request
-# def logout_request(request):
-# ...
+    return JsonResponse({
+        "userName": username,
+        "error": "Invalid credentials"
+    })
 
-# Create a `registration` view to handle sign up request
-# @csrf_exempt
-# def registration(request):
-# ...
 
-# # Update the `get_dealerships` view to render the index page with
-# a list of dealerships
-# def get_dealerships(request):
-# ...
+# Logout view
+def logout_request(request):
+    if request.method != "GET":
+        return JsonResponse(
+            {"error": "GET method required"},
+            status=405
+        )
 
-# Create a `get_dealer_reviews` view to render the reviews of a dealer
-# def get_dealer_reviews(request,dealer_id):
-# ...
+    logout(request)
 
-# Create a `get_dealer_details` view to render the dealer details
-# def get_dealer_details(request, dealer_id):
-# ...
+    return JsonResponse({
+        "userName": ""
+    })
 
-# Create a `add_review` view to submit a review
-# def add_review(request):
-# ...
+
+# Registration view
+@csrf_exempt
+def registration(request):
+    if request.method != "POST":
+        return JsonResponse(
+            {"error": "POST method required"},
+            status=405
+        )
+
+    try:
+        data = json.loads(request.body or b"{}")
+    except (json.JSONDecodeError, UnicodeDecodeError):
+        return JsonResponse(
+            {"error": "Invalid JSON"},
+            status=400
+        )
+
+    username = data.get("userName", "").strip()
+    password = data.get("password", "")
+    first_name = data.get("firstName", "").strip()
+    last_name = data.get("lastName", "").strip()
+    email = data.get("email", "").strip()
+
+    if not all([
+        username,
+        password,
+        first_name,
+        last_name,
+        email
+    ]):
+        return JsonResponse(
+            {"error": "All fields are required"},
+            status=400
+        )
+
+    if User.objects.filter(username=username).exists():
+        return JsonResponse({
+            "userName": username,
+            "error": "Already Registered"
+        })
+
+    user = User.objects.create_user(
+        username=username,
+        first_name=first_name,
+        last_name=last_name,
+        email=email,
+        password=password
+    )
+
+    login(request, user)
+
+    logger.info("Registered user: %s", username)
+
+    return JsonResponse({
+        "userName": username,
+        "status": "Authenticated"
+    })
