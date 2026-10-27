@@ -1,0 +1,9 @@
+Watching for file changes with StatReloader
+[27/Oct/2026 18:49:25] "GET / HTTP/1.1" 200 2679
+[27/Oct/2026 18:49:25] "GET /static/bootstrap.min.css HTTP/1.1" 304 0
+[27/Oct/2026 18:49:25] "GET /static/style.css HTTP/1.1" 304 0
+[27/Oct/2026 18:49:25] "GET /static/car_dealership.jpg HTTP/1.1" 304 0
+[27/Oct/2026 18:49:37] "GET /about/ HTTP/1.1" 200 11098
+[27/Oct/2026 18:49:38] "GET /static/bootstrap.bundle.min.js HTTP/1.1" 404 1996
+[27/Oct/2026 18:49:41] "GET /contact/ HTTP/1.1" 200 3479
+[27/Oct/2026 18:49:44] "GET / HTTP/1.1" 200 2679
