@@ -126,3 +126,247 @@ img{
 }
 
 
+/* Styling for the About Us and Contact Us pages */
+
+.static-page {
+    min-height: 100vh;
+    background-color: #f4f7fb;
+    color: #253247;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.static-nav {
+    background-color: #132238;
+    padding: 16px 0;
+}
+
+.static-page .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.static-page .nav-link {
+    margin-left: 12px;
+    transition: color 0.2s ease;
+}
+
+.static-page .nav-link:hover,
+.static-page .nav-link.active {
+    color: #82c8ff;
+}
+
+.page-container {
+    padding-top: 42px;
+    padding-bottom: 42px;
+}
+
+.page-hero {
+    padding: 42px;
+    margin-bottom: 25px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(25, 45, 75, 0.08);
+}
+
+.page-hero h1 {
+    margin-bottom: 20px;
+    color: #132e4f;
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+.page-hero h2 {
+    color: #132e4f;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.page-hero p {
+    line-height: 1.8;
+    color: #526176;
+}
+
+.team-photo {
+    display: block;
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.info-card {
+    height: 100%;
+    padding: 26px;
+    background-color: #ffffff;
+    border: 1px solid #e2e9f2;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(25, 45, 75, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+}
+
+.info-card h2 {
+    margin-bottom: 16px;
+    color: #174a7e;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.info-card p {
+    margin-bottom: 10px;
+    color: #526176;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.info-card a {
+    color: #1769aa;
+    text-decoration: none;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+.closing-section {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.closing-section h2 {
+    margin-bottom: 15px;
+}
+
+.contact-message {
+    margin-top: 35px;
+}
+
+.static-page .btn-primary {
+    padding: 11px 24px;
+    background-color: #1769aa;
+    border-color: #1769aa;
+    border-radius: 7px;
+}
+
+.static-page .btn-primary:hover {
+    background-color: #104d82;
+    border-color: #104d82;
+}
+
+.site-footer {
+    padding: 22px 15px;
+    background-color: #132238;
+    color: #ffffff;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .page-hero {
+        padding: 25px;
+    }
+
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+
+    .team-photo {
+        height: 260px;
+    }
+
+    .static-page .nav-link {
+        margin-left: 0;
+    }
+}
+.static-page {
+    min-height: 100vh;
+    background: #f4f7fb;
+    color: #263445;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.static-nav {
+    background-color: #132238;
+    padding: 16px 0;
+}
+
+.static-nav .navbar-brand,
+.static-nav .nav-link {
+    color: #ffffff;
+}
+
+.static-nav .nav-link.active {
+    color: #82c8ff;
+    font-weight: bold;
+}
+
+.page-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.page-hero {
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.page-hero h1,
+.page-hero h2,
+.info-card h2 {
+    color: #174a7e;
+}
+
+.page-hero p,
+.info-card p {
+    line-height: 1.7;
+}
+
+.info-card {
+    height: 100%;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e2e9f2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.info-card a {
+    color: #1769aa;
+    overflow-wrap: anywhere;
+}
+
+.contact-message {
+    margin-top: 30px;
+}
+
+.site-footer {
+    padding: 20px;
+    background: #132238;
+    color: #ffffff;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 22px;
+    }
+}
