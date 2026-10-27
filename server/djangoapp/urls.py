@@ -14,7 +14,7 @@ urlpatterns = [
     # path for dealer reviews view
 
     # path for add a review view
-        path(
+    path(
         "login",
         views.login_user,
         name="login"
