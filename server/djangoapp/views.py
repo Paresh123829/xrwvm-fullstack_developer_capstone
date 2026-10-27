@@ -15,6 +15,7 @@ import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
+from .models import CarMake, CarModel
 
 
 # Get an instance of a logger
@@ -22,7 +23,36 @@ logger = logging.getLogger(__name__)
 
 
 # Create your views here.
+# Get all car models and their associated car makes.
+def get_cars(request):
+    if request.method != "GET":
+        return JsonResponse(
+            {"error": "GET method required"},
+            status=405
+        )
 
+    # Populate the database if the sample data is missing.
+    if (
+        not CarMake.objects.exists()
+        or not CarModel.objects.exists()
+    ):
+        initiate()
+
+    car_models = CarModel.objects.select_related(
+        'car_make'
+    ).all()
+
+    cars = []
+
+    for car_model in car_models:
+        cars.append({
+            "CarModel": car_model.name,
+            "CarMake": car_model.car_make.name,
+        })
+
+    return JsonResponse({
+        "CarModels": cars
+    })
 
 # Login view
 @csrf_exempt
