@@ -33,12 +33,12 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+    'pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
 ]
 
-# Django 3.2 format: hostnames without the scheme.
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai/',
+    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
 ]
 
 REST_FRAMEWORK = {
