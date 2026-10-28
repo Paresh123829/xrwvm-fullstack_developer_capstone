@@ -1,0 +1,23 @@
+✓ main.yml - Lint Code (main)
+
+Jobs:
+✓ Lint Python Files in 12s (ID 19842345812)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Set up Python
+  ✓ Install dependencies
+  ✓ Print working directory
+  ✓ Run Linter
+  ✓ Post Set up Python
+  ✓ Post Checkout Repository
+  ✓ Complete job
+
+✓ Lint JavaScript Files in 10s (ID 19842345813)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Install Node.js
+  ✓ Install JSHint
+  ✓ Run Linter
+  ✓ Post Install Node.js
+  ✓ Post Checkout Repository
+  ✓ Complete job

@@ -28,17 +28,22 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+APP_HOST = (
+    'pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0'
+    '.proxy.cognitiveclass.ai'
+)
+
 # Replace YOUR_APPLICATION_HOST with your actual application hostname.
 # Do not include https:// or a trailing slash in these hostnames.
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    APP_HOST,
 ]
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://pareshmorank-8000.theianext-0-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    'https://' + APP_HOST,
 ]
 
 REST_FRAMEWORK = {
@@ -103,8 +108,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
         'NAME':
@@ -153,6 +160,3 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/build'),
     os.path.join(BASE_DIR, 'frontend/build/static'),
 ]
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
